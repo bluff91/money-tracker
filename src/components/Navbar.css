@@ -1,0 +1,36 @@
+.navbar {
+    height: 60px;
+    background-color: #effaf0;
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 500px;
+    padding-right: 500px;
+
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+.navbar-left-side {
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.navbar-right-side {
+    display: flex;
+    gap: 100px;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.login,
+.signup {
+    text-decoration: none;
+}
