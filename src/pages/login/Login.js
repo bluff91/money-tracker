@@ -1,7 +1,16 @@
 import "./Login.css"
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 function Login() {
+
+    const emailRef = useRef()
+    const [password, setPassword] = useState("")
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        console.log(emailRef.current.value, password)
+    }
+
     return (
         <div className="login-container">
             <h2 className="title">
@@ -15,6 +24,7 @@ function Login() {
                     minLength={6}
                     maxLength={30}
                     required
+                    ref={emailRef}
                 />
 
                 <label htmlFor="password">password:</label>
@@ -24,9 +34,14 @@ function Login() {
                     minLength={6}
                     maxLength={40}
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <button className="login-button">Login</button>
+            <button className="btn"
+                onClick={handleClick}
+                >Login
+            </button>
         </div>
     );
 }
