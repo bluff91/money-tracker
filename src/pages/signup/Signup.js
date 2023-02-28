@@ -1,5 +1,6 @@
 import "./Signup.css"
 import React, { useRef } from 'react';
+import { useSignup } from '../../hooks/useSignup'
 
 
 function Signup() {
@@ -8,9 +9,18 @@ function Signup() {
     const displayNameRef = useRef()
     const passwordRef = useRef()
 
+    const taks = "http://localhost:5000/tasks"
+    const login = "http://localhost:5000/auth/register"
+    const test = "http://localhost:5000/testingplm"
+
+    const {error, isPending, data, postData} = useSignup(login, 'POST')
+
     const handleClick = (e) => {
         e.preventDefault()
-        console.log(emailRef.current.value, displayNameRef.current.value, passwordRef.current.value)
+        postData({email:emailRef.current.value, password:passwordRef.current.value, name:displayNameRef.current.value})
+        console.log(emailRef.current.value, passwordRef.current.value, displayNameRef.current.value)
+        console.log({data})
+        // console.log(emailRef.current.value, displayNameRef.current.value, passwordRef.current.value)
     }
 
     return (
@@ -50,11 +60,14 @@ function Signup() {
                     ref={passwordRef}
                 />          
             </div>
-            <button 
+            
+            {!isPending && <button 
                 className="btn"
                 onClick={handleClick}
                 >Sign Up
-            </button>
+            </button>}
+            {isPending && <button className="btn">Loading</button>}
+            {error && <p>{error}</p>}
         </div>
     );
 }
