@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
+import { useAuthContext } from "./useAuthContext"
 
 export const useSignup = (url, method = 'GET') => {
   const [data, setData] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(null)
   const [options, setOptions] = useState(null)
+  const { dispatch } = useAuthContext()
   
   function postData(postData) {
     setOptions({
@@ -28,6 +30,7 @@ export const useSignup = (url, method = 'GET') => {
             throw new Error(res.statusText)
         }
         const data = await res.json()
+        dispatch({type: "LOGIN",payload: data})
 
         setIsPending(false)
         setData(data)
