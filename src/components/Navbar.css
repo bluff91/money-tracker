@@ -5,8 +5,8 @@
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 500px;
-    padding-right: 500px;
+    padding-left: 400px;
+    padding-right: 400px;
 
 }
 
@@ -28,9 +28,25 @@
     gap: 100px;
     text-decoration: none;
     font-size: 1.2em;
+    align-items: center;
 }
 
 .login,
 .signup {
     text-decoration: none;
+}
+
+.logout-btn {
+    background: none;
+    border: 2px solid #0e7f89;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #0e7f89;
+    cursor: pointer;
+    font-weight:500;
+}
+
+.logout-btn:hover {
+    color: #fff;
+    background: #0e7f89;
 }

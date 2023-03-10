@@ -1,13 +1,19 @@
 import "./Login.css"
 import React, { useState, useRef } from 'react';
+import { useSignup } from '../../hooks/useSignup'
+
 
 function Login() {
 
     const emailRef = useRef()
     const [password, setPassword] = useState("")
+    const login = "http://localhost:5000/auth/login"
+
+    const {error, isPending, postData} = useSignup(login, "POST")
 
     const handleClick = (e) => {
         e.preventDefault()
+        postData({email: emailRef.current.value, password:password })
         console.log(emailRef.current.value, password)
     }
 
@@ -42,6 +48,8 @@ function Login() {
                 onClick={handleClick}
                 >Login
             </button>
+            {error && <p>{error}</p>}
+            {isPending && <p>Loading...</p>}
         </div>
     );
 }

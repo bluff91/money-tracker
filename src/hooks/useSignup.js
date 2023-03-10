@@ -27,7 +27,9 @@ export const useSignup = (url, method = 'GET') => {
       try {
         const res = await fetch(url, {...fetchOptions, signal: controller.signal })
         if(!res.ok) {
-            throw new Error(res.statusText)
+          const errorText = await res.text()
+          const displayErrorText = errorText.slice(8, -2)
+            throw new Error(displayErrorText)
         }
         const data = await res.json()
         dispatch({type: "LOGIN",payload: data})
@@ -59,7 +61,7 @@ export const useSignup = (url, method = 'GET') => {
       controller.abort()
     }
 
-  }, [url, options, method])
+  }, [url, options, method, dispatch])
 
   return { data, isPending, error, postData }
 }
