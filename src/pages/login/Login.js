@@ -44,12 +44,12 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <button className="btn"
-                onClick={handleClick}
-                >Login
-            </button>
+            {!isPending && <button className="btn"
+                            onClick={handleClick}
+                            >Login
+                            </button>}
             {error && <p>{error}</p>}
-            {isPending && <p>Loading...</p>}
+            {isPending && <button className="btn" disabled>Loading</button>}
         </div>
     );
 }
