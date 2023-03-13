@@ -1,10 +1,16 @@
 import './Home.css'
 import React from 'react';
+import TransactionForm from './TransactionForm';
 
 function Home() {
     return (
-        <div>
-            HOME
+        <div className='container'>
+            <div className='content'>
+                
+            </div>
+            <div className='sidebar'>
+                <TransactionForm />
+            </div>
         </div>
     );
 }
